@@ -34,8 +34,8 @@ export const StatsCommand: CommandActionType<IStatsCommand> = {
     const currencyName = CONFIG.currencyName;
     const logs = await Log.findAll({ where: { userId, type: { [Op.ne]: 'REWARDS' } } });
 
-    const stake = logs.reduce((sum, log) => (sum += log.cost), 0);
-    const profit = logs.reduce((sum, log) => (sum += log.points), 0);
+    const stake = logs.reduce((sum, log) => sum + log.cost, 0);
+    const profit = logs.reduce((sum, log) => sum + log.points, 0);
 
     const isPositive = profit >= 0;
 

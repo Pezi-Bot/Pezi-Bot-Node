@@ -77,7 +77,6 @@ export class User
       newUser.username !== oldUser.username ||
       newUser.color !== oldUser.color ||
       newUser.isStreamer !== oldUser.isStreamer ||
-      // newUser.isAdmin !== oldUser.isAdmin ||
       newUser.isMod !== oldUser.isMod ||
       newUser.isSub !== oldUser.isSub ||
       newUser.isVIP !== oldUser.isVIP
@@ -85,7 +84,6 @@ export class User
       oldUser.username = newUser.username;
       oldUser.color = newUser.color;
       oldUser.isStreamer = newUser.isStreamer;
-      // oldUser.isAdmin = newUser.isAdmin;
       oldUser.isMod = newUser.isMod;
       oldUser.isSub = newUser.isSub;
       oldUser.isVIP = newUser.isVIP;
@@ -100,7 +98,7 @@ export class User
     return true;
   }
 
-  async addAsChatter(): Promise<Boolean> {
+  async addAsChatter(): Promise<boolean> {
     const cronRewards = await Cron.fetch<RewardCronType>('REWARDS');
 
     const isChatter = cronRewards.opts.chatters[this.userId];

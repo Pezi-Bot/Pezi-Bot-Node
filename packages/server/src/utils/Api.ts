@@ -40,7 +40,7 @@ export class Api {
       const res: ApiTwitchStatus = await axios.get(url, { headers, params: { user_login: CONFIG.streamer } });
       const data = res.data.data[0];
 
-      const isOnline = !!(data?.type === 'live');
+      const isOnline = data?.type !== 'live';
       return isOnline;
     } catch (ex) {
       console.log(`There was an error while calling Api.isStreamOnline`);

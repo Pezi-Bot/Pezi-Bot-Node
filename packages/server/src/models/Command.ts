@@ -63,7 +63,7 @@ export class Command<T extends ICommand>
     return command;
   }
 
-  async canUserExecute(user: User, bot: TwitchClient): Promise<Boolean> {
+  async canUserExecute(user: User, bot: TwitchClient): Promise<boolean> {
     const command = this;
     const currentTime = new Date();
 

@@ -42,17 +42,18 @@ export const NoteCommand: CommandActionType<INoteCommand> = {
     let message;
     let cmd = await Command.findOne({ where: { name } });
 
-    if (modifier === 'add' && !cmd && name) {
-      message = command.opts.messages.add;
-      cmd = await Command.createNewMessage(name, value);
-    }
+    if (modifier === 'add' && !cmd && name) cmd = await Command.createNewMessage(name, value);
 
     if (!cmd || !MessageCommand.isValid(cmd)) return false;
 
     switch (modifier) {
+      case 'add':
+        message = command.opts.messages.add;
+        break;
       case 'remove':
         message = command.opts.messages.remove;
         await cmd.destroy();
+        break;
       case 'enable':
         message = command.opts.messages.enable;
         await cmd.update({ isEnabled: true });

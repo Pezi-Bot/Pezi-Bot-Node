@@ -137,7 +137,7 @@ export abstract class App {
     return App.isCronStarted;
   }
 
-  static async execute(command: Command<ICommand>, user: User, params: string[], bot: TwitchClient): Promise<Boolean> {
+  static async execute(command: Command<ICommand>, user: User, params: string[], bot: TwitchClient): Promise<boolean> {
     if (AdminCommand.isValid(command)) return await AdminCommand.execute(user, params, command, bot);
     if (CmdCommand.isValid(command)) return await CmdCommand.execute(user, params, command, bot);
     if (DiceCommand.isValid(command)) return await DiceCommand.execute(user, params, command, bot);

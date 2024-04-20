@@ -48,7 +48,7 @@ export class Cron<T extends ICron>
     if (!cron) throw Error(`Cron ${type} missing from the database!`);
     return cron;
   }
-  isExecutePermited(): Boolean {
+  isExecutePermited(): boolean {
     const { callAt, isEnabled, isExecuting } = this;
 
     const currentTime = new Date();
